@@ -28,11 +28,16 @@ public class Main {
 
             Account account = new Account(number, holder, balance, withdraw);
 
+            System.out.println(account);
+
             System.out.println("-----------------");
             System.out.println("Enter amount for withdraw");
             double amount = sc.nextDouble();
 
             account.withdraw(amount);
+
+            System.out.println(account);
+
         } catch (DomainExceptions e) {
             System.out.println(e.getMessage());
         } catch (RuntimeException e){
