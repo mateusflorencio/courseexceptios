@@ -1,4 +1,6 @@
-package models.Entities;
+package models.entities;
+
+import models.exceptions.DomainExceptions;
 
 public class Account {
     private Integer number;
@@ -44,12 +46,18 @@ public class Account {
         this.withdraw = withdraw;
     }
 
-    public void deposit(Double amount){
-        this.balance+=amount;
+    public void deposit(Double amount) {
+        this.balance += amount;
     }
 
-    public void withdraw(Double amount){
-        this.balance-=amount;
+    public void withdraw(Double amount) {
+        if (amount > this.balance) {
+            throw new DomainExceptions("Quantia de saque superior ao valor em conta");
+        }
+        if (amount > withdraw) {
+            throw new DomainExceptions("Saque superior ao permitido");
+        }
+        this.balance -= amount;
     }
 
     @Override
